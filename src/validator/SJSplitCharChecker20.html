@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チェック仕様 20</title>
+    <style>
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+      th { background-color: #f2f2f2; }
+    </style>
+  </head>
+  <body>
+    <h1>チェック仕様 20</h1>
+    <ul><li>SJCharChecker.NO_CHAR  JIS第一水準、第二水準でも外字領域の文字でもない
+      <li>SJCharChecker.SINGLE_CHAR  半角英数字・記号など（ASCIIただし半角カタカナ以外）
+      <li>SJCharChecker.JIS_CHAR  JIS第一水準、第二水準の漢字、ひらがな、記号など（標準的な全角）
+      <li>SJCharChecker.HALF_KANA_CHAR  半角カタカナ
+      <li>SJCharChecker.FULL_KANA_CHAR  全角カタカナ
+      <li>SJCharChecker.PRIVATE_CHAR  NEC特殊文字、NEC選定IBM拡張、IBM拡張文字など（JIS第一水準、第二水準範囲外の外字領域の全角文字）
+    </ul>
+    <table>
+      <tr><th>Hex</th><th>Character</th><th>Description</th></tr>
+      <tr><td>0x2000</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2001</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2002</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2003</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2004</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2005</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2006</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2007</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2008</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2009</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x200a</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x200b</td><td>​</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x200c</td><td>‌</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x200d</td><td>‍</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x200e</td><td>‎</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x200f</td><td>‏</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2010</td><td>‐</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x2011</td><td>‑</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2012</td><td>‒</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2013</td><td>–</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2014</td><td>—</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2015</td><td>―</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x2016</td><td>‖</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2017</td><td>‗</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2018</td><td>‘</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x2019</td><td>’</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x201a</td><td>‚</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x201b</td><td>‛</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x201c</td><td>“</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x201d</td><td>”</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x201e</td><td>„</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x201f</td><td>‟</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2020</td><td>†</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x2021</td><td>‡</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x2022</td><td>•</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2023</td><td>‣</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2024</td><td>․</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2025</td><td>‥</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x2026</td><td>…</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x2027</td><td>‧</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2028</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2029</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x202a</td><td>‪</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x202b</td><td>‫</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x202c</td><td>‬</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x202d</td><td>‭</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x202e</td><td>‮</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x202f</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2030</td><td>‰</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x2031</td><td>‱</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2032</td><td>′</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x2033</td><td>″</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x2034</td><td>‴</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2035</td><td>‵</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2036</td><td>‶</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2037</td><td>‷</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2038</td><td>‸</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2039</td><td>‹</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x203a</td><td>›</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x203b</td><td>※</td><td>SJCharChecker.JIS_CHAR</td></tr>
+      <tr><td>0x203c</td><td>‼</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x203d</td><td>‽</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x203e</td><td>‾</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x203f</td><td>‿</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2040</td><td>⁀</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2041</td><td>⁁</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2042</td><td>⁂</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2043</td><td>⁃</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2044</td><td>⁄</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2045</td><td>⁅</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2046</td><td>⁆</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2047</td><td>⁇</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2048</td><td>⁈</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2049</td><td>⁉</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x204a</td><td>⁊</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x204b</td><td>⁋</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x204c</td><td>⁌</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x204d</td><td>⁍</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x204e</td><td>⁎</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x204f</td><td>⁏</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2050</td><td>⁐</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2051</td><td>⁑</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2052</td><td>⁒</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2053</td><td>⁓</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2054</td><td>⁔</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2055</td><td>⁕</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2056</td><td>⁖</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2057</td><td>⁗</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2058</td><td>⁘</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2059</td><td>⁙</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x205a</td><td>⁚</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x205b</td><td>⁛</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x205c</td><td>⁜</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x205d</td><td>⁝</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x205e</td><td>⁞</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x205f</td><td> </td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2060</td><td>⁠</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2061</td><td>⁡</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2062</td><td>⁢</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2063</td><td>⁣</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2064</td><td>⁤</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2065</td><td>⁥</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2066</td><td>⁦</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2067</td><td>⁧</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2068</td><td>⁨</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2069</td><td>⁩</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x206a</td><td>⁪</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x206b</td><td>⁫</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x206c</td><td>⁬</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x206d</td><td>⁭</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x206e</td><td>⁮</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x206f</td><td>⁯</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2070</td><td>⁰</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2071</td><td>ⁱ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2072</td><td>⁲</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2073</td><td>⁳</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2074</td><td>⁴</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2075</td><td>⁵</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2076</td><td>⁶</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2077</td><td>⁷</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2078</td><td>⁸</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2079</td><td>⁹</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x207a</td><td>⁺</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x207b</td><td>⁻</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x207c</td><td>⁼</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x207d</td><td>⁽</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x207e</td><td>⁾</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x207f</td><td>ⁿ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2080</td><td>₀</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2081</td><td>₁</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2082</td><td>₂</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2083</td><td>₃</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2084</td><td>₄</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2085</td><td>₅</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2086</td><td>₆</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2087</td><td>₇</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2088</td><td>₈</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2089</td><td>₉</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x208a</td><td>₊</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x208b</td><td>₋</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x208c</td><td>₌</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x208d</td><td>₍</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x208e</td><td>₎</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x208f</td><td>₏</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2090</td><td>ₐ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2091</td><td>ₑ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2092</td><td>ₒ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2093</td><td>ₓ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2094</td><td>ₔ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2095</td><td>ₕ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2096</td><td>ₖ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2097</td><td>ₗ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2098</td><td>ₘ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x2099</td><td>ₙ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x209a</td><td>ₚ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x209b</td><td>ₛ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x209c</td><td>ₜ</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x209d</td><td>₝</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x209e</td><td>₞</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x209f</td><td>₟</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20a0</td><td>₠</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20a1</td><td>₡</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20a2</td><td>₢</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20a3</td><td>₣</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20a4</td><td>₤</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20a5</td><td>₥</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20a6</td><td>₦</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20a7</td><td>₧</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20a8</td><td>₨</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20a9</td><td>₩</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20aa</td><td>₪</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ab</td><td>₫</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ac</td><td>€</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ad</td><td>₭</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ae</td><td>₮</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20af</td><td>₯</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20b0</td><td>₰</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20b1</td><td>₱</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20b2</td><td>₲</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20b3</td><td>₳</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20b4</td><td>₴</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20b5</td><td>₵</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20b6</td><td>₶</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20b7</td><td>₷</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20b8</td><td>₸</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20b9</td><td>₹</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ba</td><td>₺</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20bb</td><td>₻</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20bc</td><td>₼</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20bd</td><td>₽</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20be</td><td>₾</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20bf</td><td>₿</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20c0</td><td>⃀</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20c1</td><td>⃁</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20c2</td><td>⃂</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20c3</td><td>⃃</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20c4</td><td>⃄</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20c5</td><td>⃅</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20c6</td><td>⃆</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20c7</td><td>⃇</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20c8</td><td>⃈</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20c9</td><td>⃉</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ca</td><td>⃊</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20cb</td><td>⃋</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20cc</td><td>⃌</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20cd</td><td>⃍</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ce</td><td>⃎</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20cf</td><td>⃏</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20d0</td><td>⃐</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20d1</td><td>⃑</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20d2</td><td>⃒</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20d3</td><td>⃓</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20d4</td><td>⃔</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20d5</td><td>⃕</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20d6</td><td>⃖</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20d7</td><td>⃗</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20d8</td><td>⃘</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20d9</td><td>⃙</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20da</td><td>⃚</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20db</td><td>⃛</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20dc</td><td>⃜</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20dd</td><td>⃝</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20de</td><td>⃞</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20df</td><td>⃟</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20e0</td><td>⃠</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20e1</td><td>⃡</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20e2</td><td>⃢</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20e3</td><td>⃣</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20e4</td><td>⃤</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20e5</td><td>⃥</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20e6</td><td>⃦</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20e7</td><td>⃧</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20e8</td><td>⃨</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20e9</td><td>⃩</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ea</td><td>⃪</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20eb</td><td>⃫</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ec</td><td>⃬</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ed</td><td>⃭</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ee</td><td>⃮</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ef</td><td>⃯</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20f0</td><td>⃰</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20f1</td><td>⃱</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20f2</td><td>⃲</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20f3</td><td>⃳</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20f4</td><td>⃴</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20f5</td><td>⃵</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20f6</td><td>⃶</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20f7</td><td>⃷</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20f8</td><td>⃸</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20f9</td><td>⃹</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20fa</td><td>⃺</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20fb</td><td>⃻</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20fc</td><td>⃼</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20fd</td><td>⃽</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20fe</td><td>⃾</td><td>SJCharChecker.NO_CHAR</td></tr>
+      <tr><td>0x20ff</td><td>⃿</td><td>SJCharChecker.NO_CHAR</td></tr>
+    </table>
+  </body>
+</html>
